@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    // Get `id` from query string
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (id) {
+      // Construct your app link (replace `unilinkdemo` with your actual scheme)
+      const deepLink = `unilinkdemo://redirect?id=${id}`;
+      window.location.href = deepLink;
+
+      // Fallback if nothing happens (after 2.5s)
+      setTimeout(() => {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.example.uni_link_demo";
+      }, 2500);
+    } else {
+      document.body.innerHTML = "<h3>Missing ID in URL</h3>";
+    }
+  </script>
+</head>
+<body>
+<h3>Redirecting to app...</h3>
+</body>
+</html>
